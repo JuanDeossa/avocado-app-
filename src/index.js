@@ -11,7 +11,6 @@ async function getData(path) {
     try {
         const response=await fetch(path)
         const {data}=await response.json()
-        const ref=document.body
         const array =[]
         data.forEach(avo => {
             //Destructuring data
@@ -31,9 +30,9 @@ async function getData(path) {
             array.push(container)
         });
         // Avocados container
-        const element = document.createElement("div")
-        element.append(...array)
-        ref.insertAdjacentElement("beforeend",element)
+        const container=document.querySelector("#container")
+        container.append(...array)
+        //Main Container selector
     } catch (error) {
         throw new Error(error)
     }
