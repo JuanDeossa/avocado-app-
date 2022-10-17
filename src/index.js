@@ -8,6 +8,12 @@ function formatPrice(price) {
     }).format(price)
     return formatedPrice
 }
+//Click event function
+function cardClicked(e) {
+    if(e.target.nodeName==="H2"){
+        console.log(e.target.textContent);
+    }
+}
 
 //Async await query
 async function getData(path) {
@@ -33,9 +39,8 @@ async function getData(path) {
             array.push(container)
         });
         // Avocados container
-        const container=document.querySelector("#container")
         container.append(...array)
-        //Main Container selector
+        container.addEventListener("click",cardClicked)
     } catch (error) {
         throw new Error(error)
     }
