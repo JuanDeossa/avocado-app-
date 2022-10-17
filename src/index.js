@@ -14,13 +14,23 @@ async function getData(path) {
         const ref=document.body
         const array =[]
         data.forEach(avo => {
-            const img=document.createElement("img")
-            const h2=document.createElement("h2")
-            const div=document.createElement("div")
+            //Destructuring data
+            const {name,price,image}=avo
+            //properties container
             const container=document.createElement("div")
+            //property:image
+            const img=document.createElement("img")
+            img.src=`https://platzi-avo.vercel.app${image}`
+            //property:title
+            const h2=document.createElement("h2")
+            h2.textContent=name
+            //property:price
+            const div=document.createElement("div")
+            div.textContent=price
             container.append(img,h2,div)
             array.push(container)
         });
+        // Avocados container
         const element = document.createElement("div")
         element.append(...array)
         ref.insertAdjacentElement("beforeend",element)
