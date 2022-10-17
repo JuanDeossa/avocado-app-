@@ -4,14 +4,31 @@
  **/
 
 const apiUrl =  "https://platzi-avo.vercel.app/api/avo"
+
+
+//Async await query
 async function getData(path) {
     try {
         const response=await fetch(path)
         const {data}=await response.json()
-        console.log(data);
+        const ref=document.body
+        const array =[]
+        data.forEach(avo => {
+            const img=document.createElement("img")
+            const h2=document.createElement("h2")
+            const div=document.createElement("div")
+            const container=document.createElement("div")
+            container.append(img,h2,div)
+            array.push(container)
+        });
+        const element = document.createElement("div")
+        element.append(...array)
+        ref.insertAdjacentElement("beforeend",element)
     } catch (error) {
         throw new Error(error)
     }
 }
-
 getData(apiUrl)
+/*
+*/
+
