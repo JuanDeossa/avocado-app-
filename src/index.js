@@ -1,10 +1,13 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
-
+//base url for avocados API
 const BASE_URL =  "https://platzi-avo.vercel.app"
 
+function formatPrice(price) {
+    const formatedPrice = new Intl.NumberFormat('en-US',{
+        style: 'currency',
+        currency: 'USD'
+    }).format(price)
+    return formatedPrice
+}
 
 //Async await query
 async function getData(path) {
@@ -25,7 +28,7 @@ async function getData(path) {
             h2.textContent=name
             //property:price
             const div=document.createElement("div")
-            div.textContent=price
+            div.textContent=formatPrice(price)
             container.append(img,h2,div)
             array.push(container)
         });
