@@ -3,7 +3,7 @@
  * When you're ready to start on your site, clear the file. Happy hacking!
  **/
 
-const apiUrl =  "https://platzi-avo.vercel.app/api/avo"
+const BASE_URL =  "https://platzi-avo.vercel.app"
 
 
 //Async await query
@@ -20,7 +20,7 @@ async function getData(path) {
             const container=document.createElement("div")
             //property:image
             const img=document.createElement("img")
-            img.src=`https://platzi-avo.vercel.app${image}`
+            img.src=`${BASE_URL}${image}`
             //property:title
             const h2=document.createElement("h2")
             h2.textContent=name
@@ -38,7 +38,7 @@ async function getData(path) {
         throw new Error(error)
     }
 }
-getData(apiUrl)
+getData(`${BASE_URL}/api/avo`)
 /*
 */
 
